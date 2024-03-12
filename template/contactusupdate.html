@@ -1,0 +1,52 @@
+{% extends "navbar.html" %}
+{% block ere %}
+
+<div style=" padding-left: 120px;; padding-right: 120px">
+
+  <h1 style=" text-align: center">UPDATE</h1>
+  <div class="mb-3">
+    <form action="/now-updatethis/{{yourdata.id}}" method="POST" enctype="multipart/form-data" >
+      {% csrf_token %}
+      <label for="exampleFormControlInput1" class="form-label">FULL NAME</label>
+      <input type="text" value="{{yourdata.username}}" name="fname"
+        class="form-control"    id="exampleFormControlInput1"
+        placeholder="enter your name"required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">EMAIL
+        ADDRESS</label>
+      <input type="email" value="{{yourdata.useremail}}" name="email"
+        class="form-control" id="exampleFormControlInput1"
+        placeholder="enter your email"required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1"
+        class="form-label">PHONE-NUMBER</label>
+      <input type="number" value="{{yourdata.phonenumber}}" name="number"
+        class="form-control" id="exampleFormControlInput1"
+        placeholder="enter your number"required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1"
+        class="form-label">MESSAGE</label>
+      <textarea name="msg" class="form-control" id="exampleFormControlTextarea1"
+        rows="3" placeholder="enter your message"
+        required>{{yourdata.message}}</textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1"
+        class="form-label">upload image</label>
+      <input type="file" value="{{yourdata.myimage}}" name="img"
+        class="form-control" id="exampleFormControlInput1"
+        placeholder="upload image"required>
+    </div>
+
+
+    <div style="text-align: center">
+      <button type="submit" class="btn btn-success">update</button>
+    </div>
+    
+  </form>
+</div>
+
+{% endblock ere %}
