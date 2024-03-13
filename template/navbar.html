@@ -30,12 +30,20 @@
               <li class="nav-item">
                 <a class="nav-link" href="/admin">admin</a>
               </li>
+              {% if request.user.is_authenticated%}
               <li class="nav-item">
-                <a class="nav-link" href="/signup">Signup</a>
+                <a class="nav-link" href="/logout">logout</a>
               </li>
+              {{request.user}}
+              {%else%}
               <li class="nav-item">
                 <a class="nav-link" href="/login">login</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/signup">Signup</a>
+              </li>
+              
+              {%endif%}
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown

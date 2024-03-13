@@ -4,12 +4,14 @@ from lucky.models import contactus
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def homepage(request):
     return render(request,"home.html")
 def aboutus(request):
     return render(request,"aboutus.html")
+@login_required
 def contactusx(request):
     return render(request,"contactus.html")
 
@@ -80,29 +82,39 @@ def  signup(request):
     if request.method =="POST":
         username=request.POST.get("username")
         email=request.POST.get("email")
-        password = request.POST.get("mypass")
-        fullname = request.POST.get("Fullname")
-        saveuser = User.objects.create_user(username=username,email=email,password=password,first_name=fullname)
+        mypass = request.POST.get("mypass")
+        fullname = request.POST.get("fullname")
+        saveuser = User.objects.create_user(username=username,email=email,password=mypass,first_name=fullname)
         saveuser.save()
         messages.success(request,"user added successfully")
     return render(request,"signup.html")
 
 
-def login(request):
-    if request.method=="POST":
-       myname=request.POST.get("username")
-       passx=request.POST.get("password")
+def mylogin(request):
+    if request.user.is_authenticated:
+        return redirect("contactus")
 
-       usercheck = authenticate(username=myname,password=passx)
+
+    if request.method=="POST":
+       username=request.POST.get("username")
+       mypass=request.POST.get("mypass")
+
+       usercheck = authenticate(username=username,password=mypass)
        if usercheck is not None:
            login(request,usercheck)
-        #    messages.success(request,"login successfully done....")
+           messages.success(request,"login successfully done....")
            return redirect("contactus")
-    #    else:
-    #        messages.warning(request,"please enter valid")
-    return render(request,"login.html")       
+       else:
+           messages.warning(request,"please enter valid info")
+    return render(request,"login.html")   
 
-           
+
+def mylogout(request):
+    logout(request)
+    return redirect("login")
+
+
+            
  
          
 

@@ -132,3 +132,5 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "sachin981648276@gmail.com"
 EMAIL_HOST_PASSWORD ="xzac zyba uaxs rlwx "
+
+LOGIN_URL='/login'

@@ -11,7 +11,10 @@ urlpatterns = [
     path("services",views.services,name="services"),
 
     path("signup",views.signup, name="signup"),
-    path("login",views.login, name="login"),
+
+    path("login",views.mylogin, name="login"),
+    
+    path("logout",views.mylogout,name="logout"),
 
 
     
