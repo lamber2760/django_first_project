@@ -10,25 +10,21 @@ urlpatterns = [
     path("contactus",views.contactusx,name="contactus"),
     path("services",views.services,name="services"),
 
-    path("signup",views.signup, name="signup"),
-
-    path("login",views.mylogin, name="login"),
-    
-    path("logout",views.mylogout,name="logout"),
-
 
     
     path("datasave",views.savethis),
 
 
-    path("delete-this/<int:dfg>",views.deletethisdata),
-
-
-    path("update-this/<int:zxc>",views.updatethisdata),
-
-    
+    path("delete-this/<int:dfg>",views.deletethisdata), 
+    path("update-this/<int:zxc>",views.updatethisdata), 
     path("now-updatethis/<int:updateid>",views.nowupdatedata),
     
-    path("search",views.searchthisdata,name="mysearch")
+    path("search",views.searchthisdata,name="mysearch"),
+
+    
+    path("signup",views.signup, name="signup"),
+    path("login",views.mylogin, name="login"),
+    path("logout",views.mylogout,name="logout")
+
 
 ]

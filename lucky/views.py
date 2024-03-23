@@ -93,7 +93,7 @@ def  signup(request):
 def mylogin(request):
     if request.user.is_authenticated:
         return redirect("contactus")
-
+ 
 
     if request.method=="POST":
        username=request.POST.get("username")
